@@ -8,8 +8,8 @@ import DarkModeSwithch from './DarkModeSwithch'
 
 export default function Header() {
   return (
-    <div className='flex justify-between items-center'>
-      <div className='flex mx-4 lg:mx-6 mt-6'>
+    <div className='flex justify-between items-center bg-gray-50 pb-4 dark:bg-gray-800'>
+      <div className='flex mx-6 lg:mx-10 mt-6'>
         <MenuItem title="HOME" address="/" Icon={AiFillHome} />
         <MenuItem title="ABOUT" address="/about" Icon={FaInfoCircle} />
       </div>
