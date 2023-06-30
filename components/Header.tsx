@@ -3,7 +3,6 @@ import MenuItem from './MenuItem'
 import { AiFillHome } from 'react-icons/ai'
 import { FaInfoCircle } from 'react-icons/fa'
 import Link from 'next/link'
-import { HomeIcon } from '@heroicons/react/24/solid'
 import DarkModeSwithch from './DarkModeSwithch'
 
 export default function Header() {
@@ -13,7 +12,7 @@ export default function Header() {
         <MenuItem title="HOME" address="/" Icon={AiFillHome} />
         <MenuItem title="ABOUT" address="/about" Icon={FaInfoCircle} />
       </div>
-      <div className='flex mx-4 lg:mx-8 items-center space-x-4 lg:space-x-6 mt-6'>
+      <div className='flex mx-8 lg:mx-16 items-center space-x-4 lg:space-x-6 mt-6'>
         <DarkModeSwithch />
         <Link href="/">
           <p>
