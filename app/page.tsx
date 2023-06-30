@@ -22,11 +22,12 @@ export default async function Home({ searchParams }: any) {
   let results: any;
   const res = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"}?language=en-US`, options)
     .then(response => response.json())
-    .then(response => {results = response.results; console.log(response);})
+    .then(response => { results = response.results; console.log(response); })
     .catch(err => console.error(err));
 
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="items-center justify-center px-24 py-6">
       <Results results={results} />
     </main>
   )
