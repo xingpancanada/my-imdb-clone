@@ -7,23 +7,26 @@ export default async function Home({ searchParams }: any) {
 
   const genre = searchParams.genre || "fetchTrending";
 
-  //// iIMDB apikey cannot support by NEXTJS????????
-  // const res = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"}?api_key=${API_KEY}&language=en-US&page=1`, { next: { revalidate: 3600 }});
+  //// iIMDB apikey cannot support by NEXTJS???????? --> works with apikey
+  const res = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"}?api_key=${API_KEY}&language=en-US&page=1`, { next: { revalidate: 3600 }});
+  const movies = await res.json();
+  const results = await movies.results;
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${API_ACCESS_TOKEN}`
-    },
-    next: { revalidate: 3600 }
-  };
-
-  let results: any;
-  const res = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"}?language=en-US`, options)
-    .then(response => response.json())
-    .then(response => { results = response.results; console.log(response); })
-    .catch(err => console.error(err));
+  //// works with api access token
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     accept: 'application/json',
+  //     Authorization: `Bearer ${API_ACCESS_TOKEN}`
+  //   },
+  //   next: { revalidate: 3600 }
+  // };
+  
+  // let results: any;
+  // const res = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"}?language=en-US`, options)
+  //   .then(response => response.json())
+  //   .then(response => { results = response.results; console.log(response); })
+  //   .catch(err => console.error(err));
 
 
   return (
